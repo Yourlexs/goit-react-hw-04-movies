@@ -19,11 +19,19 @@ export default function Cast() {
         {cast &&
           cast.map(actor => (
             <li key={actor.id}>
-              <img
-                src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
-                alt={actor.name}
-                className={styles.foto}
-              />
+              {actor.profile_path ? (
+                <img
+                  src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
+                  alt={actor.name}
+                  className={styles.foto}
+                />
+              ) : (
+                <img
+                  src="https://www.placecage.com/200/300"
+                  alt={actor.name}
+                  className={styles.foto}
+                />
+              )}
               <p>{actor.name}</p>
             </li>
           ))}

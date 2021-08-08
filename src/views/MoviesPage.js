@@ -1,26 +1,31 @@
 import { useState, useEffect } from 'react';
-import { Link, useRouteMatch, useLocation } from 'react-router-dom';
+import { Link, useRouteMatch, useLocation, useHistory } from 'react-router-dom';
 
 import * as moviesApi from '../services/movies-api';
 import Searchbar from '../components/Searchbar/Searchbar';
 
-// const MovieDetailsPage = lazy(() => import("./MovieDetailsPage.js"));
-
 export default function Moviespage() {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [movies, setMovies] = useState([]);
-
   const { url } = useRouteMatch();
   const location = useLocation();
+  const history = useHistory();
+  const queryParams = new URLSearchParams(location.search).get('query');
+  const [searchQuery, setSearchQuery] = useState(queryParams || '');
+  const [movies, setMovies] = useState([]);
 
   useEffect(() => {
     if (!searchQuery) {
       return;
     }
+
     moviesApi
       .fetchMovieByQuery(searchQuery)
       .then(result => setMovies(result.results));
-  }, [searchQuery]);
+
+    history.push({
+      pathname: location.pathname,
+      search: `query=${searchQuery}`,
+    });
+  }, [searchQuery, history, location.pathname]);
 
   const changeSearchQuery = q => {
     if (searchQuery === q) {

@@ -34,7 +34,7 @@ export default function MovieDetailsPage() {
   return (
     <>
       <button onClick={onGoBack}>
-        {location?.state?.from?.label ?? 'Go back'}{' '}
+        {location?.state?.from?.label ?? 'Go back'}
       </button>
       {movie && (
         <>
@@ -62,10 +62,22 @@ export default function MovieDetailsPage() {
 
           <ul>
             <li>
-              <NavLink to={`${url}/cast`}>Cast</NavLink>
+              <NavLink
+                to={`${url}/cast`}
+                className={styles.link}
+                activeClassName={styles.activeLink}
+              >
+                Cast
+              </NavLink>
             </li>
             <li>
-              <NavLink to={`${url}/reviews`}>Reviews</NavLink>
+              <NavLink
+                to={`${url}/reviews`}
+                className={styles.link}
+                activeClassName={styles.activeLink}
+              >
+                Reviews
+              </NavLink>
             </li>
           </ul>
 
