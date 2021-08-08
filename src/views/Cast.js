@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 
 import * as moviesAPI from '../services/movies-api';
 
+import styles from './Cast.module.css';
+
 export default function Cast() {
   const { moviesId } = useParams();
   const [cast, setCast] = useState([]);
@@ -17,7 +19,11 @@ export default function Cast() {
         {cast &&
           cast.map(actor => (
             <li key={actor.id}>
-              <img src={actor.profile_path} alt={actor.name} />
+              <img
+                src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
+                alt={actor.name}
+                className={styles.foto}
+              />
               <p>{actor.name}</p>
             </li>
           ))}

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useRouteMatch } from 'react-router-dom';
+import { Link, useRouteMatch, useLocation } from 'react-router-dom';
 
 import * as moviesApi from '../services/movies-api';
 import Searchbar from '../components/Searchbar/Searchbar';
@@ -11,6 +11,7 @@ export default function Moviespage() {
   const [movies, setMovies] = useState([]);
 
   const { url } = useRouteMatch();
+  const location = useLocation();
 
   useEffect(() => {
     if (!searchQuery) {
@@ -35,7 +36,19 @@ export default function Moviespage() {
       <ul>
         {movies.map(movie => (
           <li key={movie.id}>
-            <Link to={`${url}/${movie.id}`}>{movie.title}</Link>
+            <Link
+              to={{
+                pathname: `${url}/${movie.id}`,
+                state: {
+                  from: {
+                    location,
+                    label: 'Go Back',
+                  },
+                },
+              }}
+            >
+              {movie.title}
+            </Link>
           </li>
         ))}
       </ul>

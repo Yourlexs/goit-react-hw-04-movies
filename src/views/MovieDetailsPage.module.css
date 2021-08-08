@@ -1,0 +1,11 @@
+.movieDetails {
+  display: flex;
+  border-bottom: 1px solid #2a363b;
+  padding-bottom: 15px;
+}
+
+.poster {
+  height: 480px;
+  margin-top: 15px;
+  margin-right: 15px;
+}

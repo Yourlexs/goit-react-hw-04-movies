@@ -15,15 +15,16 @@ export default function Reviews() {
 
   return (
     <>
-      {reviews &&
+      {reviews.length > 0 ? (
         reviews.map(review => (
           <div key={review.id}>
-            <h3>{review.author}</h3>
+            <h3>Author: {review.author}</h3>
             <p>{review.content}</p>
           </div>
-        ))}
-
-      {/* <p>We don't have any reviews for this movie</p> */}
+        ))
+      ) : (
+        <p>We don't have any reviews for this movie</p>
+      )}
     </>
   );
 }
