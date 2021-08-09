@@ -63,7 +63,7 @@ export default function MovieDetailsPage() {
           <ul>
             <li>
               <NavLink
-                to={`${url}/cast`}
+                to={{ ...location, pathname: `${url}/cast` }}
                 className={styles.link}
                 activeClassName={styles.activeLink}
               >
@@ -72,7 +72,7 @@ export default function MovieDetailsPage() {
             </li>
             <li>
               <NavLink
-                to={`${url}/reviews`}
+                to={{ ...location, pathname: `${url}/reviews` }}
                 className={styles.link}
                 activeClassName={styles.activeLink}
               >

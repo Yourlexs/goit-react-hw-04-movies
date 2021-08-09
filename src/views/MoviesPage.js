@@ -46,6 +46,7 @@ export default function Moviespage() {
                 pathname: `${url}/${movie.id}`,
                 state: {
                   from: {
+                    search: `query=${searchQuery}`,
                     location,
                     label: 'Go Back',
                   },
