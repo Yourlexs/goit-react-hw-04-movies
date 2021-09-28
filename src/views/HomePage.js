@@ -3,6 +3,8 @@ import { Link, useRouteMatch, useLocation } from 'react-router-dom';
 
 import * as moviesApi from '../services/movies-api';
 
+import styles from './HomePage.module.css';
+
 export default function HomePage() {
   const [movies, setMoves] = useState([]);
   const { url } = useRouteMatch();
@@ -16,9 +18,9 @@ export default function HomePage() {
     <>
       <h1>Trending today</h1>
       {movies && (
-        <ul>
+        <ul className={styles.moviesList}>
           {movies.map(movie => (
-            <li key={movie.id}>
+            <li key={movie.id} className={styles.movie}>
               <Link
                 to={{
                   pathname: `${url}movies/${movie.id}`,
@@ -30,6 +32,11 @@ export default function HomePage() {
                   },
                 }}
               >
+                <img
+                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                  alt={movie.title}
+                  className={styles.poster}
+                />
                 {movie.title}
               </Link>
             </li>

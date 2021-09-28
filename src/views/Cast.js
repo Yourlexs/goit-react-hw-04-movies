@@ -15,10 +15,10 @@ export default function Cast() {
 
   return (
     <>
-      <ul>
+      <ul className={styles.castList}>
         {cast &&
           cast.map(actor => (
-            <li key={actor.id}>
+            <li key={actor.id} className={styles.actor}>
               {actor.profile_path ? (
                 <img
                   src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}

@@ -1,3 +1,15 @@
+.castList {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-bottom: -15px;
+}
+
+.actor {
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+
 .foto {
   max-height: 220px;
 }
